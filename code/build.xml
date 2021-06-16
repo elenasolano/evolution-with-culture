@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<project name="main_experiment" basedir="." default="compile">
+
+  <target name="init">
+    <property name="src.dir" value="src" />
+    <property name="bin.dir" value="bin" />
+   </target>
+
+  <target name="clean" depends="init">
+    <delete dir="${bin.dir}/main_experiment" />
+    <delete dir="${bin.dir}/pacman" />
+   </target>
+
+  <target name="compile" depends="clean">
+    <mkdir dir="${bin.dir}" />
+    <javac srcdir="${src.dir}" destdir="${bin.dir}" includeantruntime="false" />
+  </target>
+
+  <target name="run" depends="compile">
+    <java dir="${bin.dir}" classname="main.experiment" fork="true" />
+  </target>
+    
+</project>
